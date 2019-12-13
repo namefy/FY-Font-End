@@ -1,32 +1,62 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+    <el-container>
+      <el-header style="height:10vh;">
+        <top-menu :menu-data="menuData"></top-menu>
+      </el-header>
+      <el-container style="height:80vh;">
+        <el-aside>aside</el-aside>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+      <el-footer style="height:10vh;">footer</el-footer>
+    </el-container>
   </div>
 </template>
 
+<script>
+import TopMenu from "@/components/TopMenu.vue";
+import router from "@/router/index.ts";
+export default {
+  components: {
+    "top-menu": TopMenu
+  },
+  data() {
+    return {
+      menuData: [
+        {
+          icon: "el-icon-location",
+          path: "#",
+          title: "我是菜单",
+          children: [
+            {
+              icon: "el-icon-info",
+              path: "home",
+              title: "我是菜单的菜单",
+              children: null
+            }
+          ]
+        },
+        {
+          icon: "el-icon-location",
+          path: "#2",
+          title: "我是菜单2",
+          children: [
+            {
+              icon: "el-icon-info",
+              path: "home2",
+              title: "我是菜单的菜单2",
+              children: null
+            }
+          ]
+        }
+      ]
+    };
+  },
+  router
+};
+</script>
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
