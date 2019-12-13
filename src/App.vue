@@ -4,7 +4,7 @@
       <el-header style="height:10vh;">
         <top-menu :menu-data="menuData"></top-menu>
       </el-header>
-      <el-container style="height:80vh;">
+      <el-container style="height:77vh;">
         <el-aside>aside</el-aside>
         <el-main>
           <router-view></router-view>
@@ -59,4 +59,7 @@ export default {
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
 </style>
